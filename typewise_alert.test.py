@@ -9,8 +9,8 @@ class TypewiseTest(unittest.TestCase):
     self.assertTrue(typewise_alert.infer_breach(50, 20, 60) == 'NORMAL')
   
   def test_check_and_alert(self):
-    self.assertTrue(typewise_alert.check_and_alert('TO_CONSOLE',{'coolingType':'HIGH_ACTIVE_COOLING'},80)== True)
-    self.assertTrue(typewise_alert.check_and_alert('TO_EMAIL',{'coolingType':'HIGH_ACTIVE_COOLING'},80)== True)  
+    self.assertTrue(typewise_alert.check_and_alert('TO_CONSOLE',{'coolingType':'HIGH_ACTIVE_COOLING'},100)== True)
+    self.assertTrue(typewise_alert.check_and_alert('TO_EMAIL',{'coolingType':'HIGH_ACTIVE_COOLING'},100)== True)  
 
 
 if __name__ == '__main__':
