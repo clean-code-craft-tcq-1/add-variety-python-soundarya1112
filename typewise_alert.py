@@ -1,6 +1,6 @@
-temperature_breach_types = {'PASSIVE_COOLING': {'coolingType': 'PASSIVE_COOLING' },'HI_ACTIVE_COOLING': {'coolingType': 'HI_ACTIVE_COOLING' },'MED_ACTIVE_COOLING': {'coolingType': 'MED_ACTIVE_COOLING' }}
+temperature_breach_limits = { 'PASSIVE_COOLING' : {'lowerLimit': 0,'upperLimit':35}, 'HI_ACTIVE_COOLING' : {'lowerLimit': 0,'upperLimit':45},'MED_ACTIVE_COOLING' : {'lowerLimit': 0,'upperLimit':40} }
 
-temperature_breach_limits = {'PASSIVE_COOLING': {'low': 0, 'high':35 },'HI_ACTIVE_COOLING': {'low': 0, 'high':45 },'MED_ACTIVE_COOLING': {'low': 0, 'high':40 }}
+temperature_breach_msgs = {'TOO_LOW' : 'too low', 'TOO_HIGH' : 'too high', 'NORMAL' : 'normal'}
 
 def infer_breach(value, lowerLimit, upperLimit):
   if value < lowerLimit:
@@ -11,10 +11,9 @@ def infer_breach(value, lowerLimit, upperLimit):
 
 
 def classify_temperature_breach(coolingType, temperatureInC):
-  lowerLimit = temperature_breach_limits[coolingType]['low']
-  upperLimit = temperature_breach_limits[coolingType]['high']
+  lowerLimit = temperature_breach_limits[coolingType]['lowerLimit']
+  upperLimit = temperature_breach_limits[coolingType]['upperLimit']
   return infer_breach(temperatureInC, lowerLimit, upperLimit)
-
 
 def send_to_controller(breachType):
   header = 0xfeed
